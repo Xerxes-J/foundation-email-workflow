@@ -1,0 +1,4 @@
+// Ignore
+@function i($str) {
+  @return unquote($str);
+}

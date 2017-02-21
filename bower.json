@@ -1,0 +1,25 @@
+{
+  "name": "foundation-emails",
+  "version": "2.2.1",
+  "homepage": "http://foundation.zurb.com/emails",
+  "authors": [
+    "ZURB <foundation@zurb.com>",
+    "Xerxes Jarquin <xjarquin@dminc.com>"
+  ],
+  "description": "A modified version of the Foundation for emails framework created by ZURB.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "gem",
+    "test",
+    "tests",
+    "docs",
+    "dist",
+    "templates"
+  ],
+  "dependencies": {
+    "foundation-emails": "^2.2.1"
+  }
+}

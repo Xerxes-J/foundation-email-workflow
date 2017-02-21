@@ -1,0 +1,17 @@
+// Font Smoothing
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+// Double Margin (margin-bottom:$px; + Margin-bottom:$px)
+@mixin margin-bottom ($px) {
+  margin-bottom: $px;
+  Margin-bottom: $px;
+}

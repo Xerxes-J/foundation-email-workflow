@@ -1,0 +1,24 @@
+{
+  "base" : {
+    "src" : "./src/",
+    "build" : "./build/",
+    "archive" : "./_archive/"
+  },
+  "templates" : {
+    "partials" : "./src/templates/partials/",
+    "layouts" : "./src/templates/layouts/",
+    "emails" : "./src/templates/emails/",
+    "helpers" : "./src/templates/helpers/"
+  },
+  "styles" : {
+    "src" : "./src/assets/scss/",
+    "build" : "./build/assets/css/"
+  },
+  "images" : {
+    "src" : "./src/assets/img/",
+    "build" : "./build/assets/img/"
+  },
+  "data" : "./src/data/",
+  "config" : "./config/",
+  "gulp" : "./gulp/"
+}
