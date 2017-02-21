@@ -1,4 +1,5 @@
 # Foundation for Emails Template (v2)
+[![devDependency Status](https://david-dm.org/xerxesj/foundation-email-workflow/dev-status.svg)](https://david-dm.org/xerxesj/foundation-email-workflow#info=devDependencies)
 
 **Please open all issues regarding the framework on the main [Foundation for Emails](http://github.com/zurb/foundation-emails/issues) repo.**
 
