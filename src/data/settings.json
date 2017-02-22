@@ -47,7 +47,7 @@
 	"lead-font-size": "$global-font-size * 1.25",
 	"lead-line-height": "160%",
 	"text-padding": "10px",
-	"subheader-lineheight": "1.4",
+	"subheader-lineheight": "140%",
 	"subheader-color": "$dark-gray",
 	"subheader-font-weight": "$global-font-weight",
 	"subheader-margin-top": "4px",
