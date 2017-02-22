@@ -15,6 +15,9 @@
   },
   "author": "Xerxes Jarquin <hello@xerxesjarquin.com>",
   "license": "MIT",
+  "dependencies": {
+    "foundation-emails": "xerxesj/foundation-emails#develop"
+  },
   "devDependencies": {
     "assemble": "^0.23.0",
     "autoprefixer": "^6.3.3",

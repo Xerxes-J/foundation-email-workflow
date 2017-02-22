@@ -51,7 +51,9 @@ function scss() {
         // Check Size
         .pipe(size({title: 'Before compile'}))
         // SCSS to CSS with Error Log
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            includePaths: ['node_modules/foundation-emails/scss']
+        }).on('error', sass.logError))
         // CSS Autoprefixer
         .pipe(postcss([
             autoprefixer(CONFIG.autoprefixer)
