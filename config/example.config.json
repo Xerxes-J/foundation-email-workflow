@@ -16,7 +16,7 @@
     "username": "YOUR_LITMUS@EMAIL.COM",
     "password": "YOUR_ACCOUNT_PASSWORD",
     "url": "https://YOUR_ACCOUNT.LITMUS.COM",
-    "applications": ["ol2003","ol2007","ol2010","ol2011","ol2013","ol2016","chromegmailnew","chromeyahoo","appmail9","iphone5s","iphone6s","ipad","android4","androidgmailapp"]
+    "applications": ["appmail9","appmail10","ol2000","ol2003","ol2007","ol2010","ol2013","ol2015","android4","androidgmailapp","iphone5sios8","iphone7","iphone7plus","ipadmini","ipad","ffaolonline","chromeaolonline","aolonline","googleapps","chromegoogleapps","ffgoogleapps","chromegmailnew","ffgmailnew","gmailnew","ffoutlookcom","chromeoutlookcom","office365","chromeyahoo","yahoo","ffyahoo"]
   },
   "MAIL" : {
     "to": [
