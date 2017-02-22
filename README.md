@@ -97,9 +97,9 @@ Testing in Litmus requires the images to be hosted publicly. The provided gulp t
 ```json
 {
   "LITMUS": {
-    "username": "YOUR_LITMUS@EMAIL.com",
+    "username": "YOUR_LITMUS@EMAIL.COM",
     "password": "YOUR_ACCOUNT_PASSWORD",
-    "url": "https://YOUR_ACCOUNT.litmus.com",
+    "url": "https://YOUR_ACCOUNT.LITMUS.COM",
     "applications": ["ol2003","ol2007","ol2010","ol2011","ol2013","chromegmailnew","chromeyahoo","appmail9","iphone5s","ipad","android4","androidgmailapp"]
   }
 }
