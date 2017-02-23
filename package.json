@@ -7,9 +7,9 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build --production --image",
-    "zip": "gulp zip --production",
-    "litmus": "gulp litmus --production",
-    "mail": "gulp mail --production",
+    "zip": "gulp zip --production --image",
+    "litmus": "gulp litmus --production --image",
+    "mail": "gulp mail --production --image",
     "deploy": "gulp deploy --production --image",
     "framework": "bower install"
   },

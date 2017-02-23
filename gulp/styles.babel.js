@@ -33,7 +33,7 @@ var filePath = './config/paths.json',
 // Compiles SCSS to CSS
 // ================================
 gulp.task('styles',
-    gulp.series(scss, scssjson, duplicate, renamecss, removecss)
+    gulp.series(scss, duplicate, renamecss, removecss)
 );
 
 // Functions
@@ -71,14 +71,6 @@ function scss() {
         // Destination
         .pipe(gulp.dest(PATHS.styles.build));
 
-}
-
-function scssjson() {
-    return gulp.src(PATHS.styles.src + '_settings.scss')
-        // Sass variables
-        .pipe($.if(!PRODUCTION, $.sassJson()))
-        // Desitination of file
-        .pipe(gulp.dest(PATHS.base.src + 'data'));
 }
 
 function duplicate() {
