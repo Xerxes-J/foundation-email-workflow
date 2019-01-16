@@ -18,7 +18,6 @@ This is the modified starter project for [Foundation for Emails](http://foundati
  - Zip emails by HTML and images
 
 
-
 ## Installation
 To use this template, your computer needs to have [Node.js](https://nodejs.org/en/) 0.12 or greater.
 

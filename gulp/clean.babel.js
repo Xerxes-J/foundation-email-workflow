@@ -1,29 +1,22 @@
-import gulp     from 'gulp';
-import fs       from 'fs';
-import del      from 'del';
-import colors   from 'colors';
+import gulp from 'gulp';
+import fs from 'fs-extra';
+import del from 'del';
+import colors from 'colors'
 
+// Grab paths
+const CONFIG_PATH = './config/paths.json';
+const PATHS = fs.readJsonSync(CONFIG_PATH);
 
-//  Grab Paths
-var configPath = './config/paths.json',
-    PATHS = JSON.parse(fs.readFileSync(configPath));
+// Deletes build folder
+const clean = (done) => {
+	console.log('========');
+	console.log('DELETED:'.bold.red + ' "build" '.cyan + 'folder');
+	console.log('========');
 
+	return del([PATHS.BASE.build], done);
+}
 
 // Clean Task
-// Deletes folders/files
+// Deletes everything inside /build folder
 // ================================
-
-// Delete build folder
 gulp.task('clean', clean);
-
-// Functions
-function clean(done) {
-
-    // Terminal Message
-    console.log('========');
-    console.log('DELETED:'.bold.red + ' "build" '.cyan + 'folder');
-    console.log('========');
-
-    // Destination
-    return del([PATHS.base.build], done);
-}

@@ -1,34 +1,31 @@
-import gulp     from 'gulp';
-import fs       from 'fs';
-import beep     from 'beepbeep';
-
+import gulp from 'gulp';
+import fs from 'fs-extra';
+import beep from 'beepbeep'
 
 //  Grab Paths
-var configPath = './config/config.json';
+const CONFIG_PATH = './config/config.json';
 
 // Variables
-var CONFIG;
+let CONFIG;
 
+// If no config.json is found deliver message on console
+const creds = (done) => {
+	console.log('========');
+	console.log('CREDENTIALS:'.bold.red + ' ' + 'Checking if' + ' ' + '"config.json"'.cyan + ' ' + 'exists in' + ' ' + '"config/"'.cyan + ' ' + 'folder');
+	console.log('========');
+
+	try {
+		CONFIG = fs.readJsonSync(CONFIG_PATH);
+	} catch (e) {
+		beep();
+		console.log('Sorry, there was an issue locating your config/base.json file. Please see README.md for further details...');
+		process.exit();
+	}
+
+	return done();
+}
 
 // Credential Check Task
 // Checks to see if config.json exist
 // ================================
-
 gulp.task('creds', creds);
-
-// Functions
-function creds(done) {
-
-  // Terminal Message
-  console.log('========');
-  console.log('CREDENTIALS:'.bold.red + ' ' + 'Checking if' + ' ' +'"config.json"'.cyan + ' ' + 'exists in' + ' ' + '"config/"'.cyan + ' ' + 'folder');
-  console.log('========');
-
-  try { CONFIG = JSON.parse(fs.readFileSync(configPath)); }
-  catch(e) {
-      beep();
-      console.log('Sorry, there was an issue locating your config.json. Please see README.md');
-      process.exit();
-  }
-  done();
-}

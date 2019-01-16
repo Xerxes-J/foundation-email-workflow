@@ -1,24 +1,30 @@
 {
-  "base" : {
-    "src" : "./src/",
-    "build" : "./build/",
-    "archive" : "./_archive/"
-  },
-  "templates" : {
-    "partials" : "./src/templates/partials/",
-    "layouts" : "./src/templates/layouts/",
-    "emails" : "./src/templates/emails/",
-    "helpers" : "./src/templates/helpers/"
-  },
-  "styles" : {
-    "src" : "./src/assets/scss/",
-    "build" : "./build/assets/css/"
-  },
-  "images" : {
-    "src" : "./src/assets/img/",
-    "build" : "./build/assets/img/"
-  },
-  "data" : "./src/data/",
-  "config" : "./config/",
-  "gulp" : "./gulp/"
+	"BASE": {
+		"src": "./src/",
+		"build": "./build/",
+		"archive": "./_archive/"
+	},
+	"TEMPLATES": {
+		"partials": "./src/templates/partials/",
+		"layouts": "./src/templates/layouts/",
+		"emails": "./src/templates/emails/",
+		"helpers": "./src/templates/helpers/"
+	},
+	"STYLES": {
+		"src": "./src/assets/scss/",
+		"build": "./build/assets/css/"
+	},
+	"IMAGES": {
+		"src": "./src/assets/img/",
+		"build": "./build/assets/img/"
+	},
+	"FTP": {
+		"domain": "clients.pappasgroup.com/",
+		"src": "web/content/HCA/Hyundai/Email/",
+		"image": "assets/img/",
+		"full": "http://clients.pappasgroup.com/HCA/Hyundai/Email/"
+	},
+	"DATA": "./src/data/",
+	"CONFIG": "./config/",
+	"GULP": "./gulp/"
 }
