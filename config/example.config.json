@@ -1,37 +1,31 @@
 {
-  "PORT" : "3000",
-  "FTP" : {
-    "host" : "YOUR_HOSTED_SERVER",
-    "user" : "YOUR_USERNAME",
-    "password" : "YOUR_PASSWORD",
-    "parallel" : 10
-  },
-  "FTP_IMAGE" : {
-    "domain" : "YOUR_DOMAIN",
-    "src" : "YOUR_PROJECT_ROOT_FOLDER",
-    "image" : "YOUR_IMAGE_FOLDER",
-    "full" : "HTTPS:///WWW.DOMAIN.COM/FOLDER/PROJECT_ROOT"
-  },
-  "LITMUS" : {
-    "username": "YOUR_LITMUS@EMAIL.COM",
-    "password": "YOUR_ACCOUNT_PASSWORD",
-    "url": "https://YOUR_ACCOUNT.LITMUS.COM",
-    "applications": ["appmail9","appmail10","ol2000","ol2003","ol2007","ol2010","ol2013","ol2015","android4","androidgmailapp","iphone5sios8","iphone7","iphone7plus","ipadmini","ipad","ffaolonline","chromeaolonline","aolonline","googleapps","chromegoogleapps","ffgoogleapps","chromegmailnew","ffgmailnew","gmailnew","ffoutlookcom","chromeoutlookcom","office365","chromeyahoo","yahoo","ffyahoo"]
-  },
-  "MAIL" : {
-    "to": [
-      "RECIPEINT_EMAIL@DOMAIN.COM"
-    ],
-    "from": "COMPANY_NAME <INFO@COMPANY.COM",
-    "smtp": {
-     "auth": {
-       "user": "EMAIL@DOMAIN.COM",
-       "pass": "YOUR_ACCOUNT_PASSWORD"
-     },
-      "host": "SMTP.DOMAIN.COM",
-      "secureConnection": true,
-      "port": 465
-    }
-  },
-  "autoprefixer" : ["last 6 versions", "ie >= 9", "ios 8", "android 4"]
+	"PORT": "3000",
+	"FTP": {
+		"host": "",
+		"user": "",
+		"password": "",
+		"parallel": 10
+	},
+	"LITMUS": {
+		"username": "",
+		"password": "",
+		"url": "",
+		"applications": ["appmail9", "appmail10", "ol2000", "ol2003", "ol2007", "ol2010", "ol2013", "ol2015", "android4", "androidgmailapp", "iphone5sios8", "iphone7", "iphone7plus", "ipadmini", "ipad", "ffaolonline", "chromeaolonline", "aolonline", "googleapps", "chromegoogleapps", "ffgoogleapps", "chromegmailnew", "ffgmailnew", "gmailnew", "ffoutlookcom", "chromeoutlookcom", "office365", "chromeyahoo", "yahoo", "ffyahoo"]
+	},
+	"MAIL": {
+		"to": [""],
+		"from": "",
+		"smtp": {
+			"service": "gmail",
+			"redirect_url": "https://developers.google.com/oauthplayground",
+			"auth": {
+				"user": "",
+				"client_id": "",
+				"client_secret": "",
+				"authorization_code": "",
+				"refresh_token": ""
+			}
+		}
+	},
+	"autoprefixer": ["last 6 versions", "ie >= 9", "ios 8", "android 4"]
 }

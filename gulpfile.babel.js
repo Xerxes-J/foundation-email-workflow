@@ -24,15 +24,15 @@ gulp.task('zip',
 	gulp.series('build', 'zip')
 );
 
-// // Litmus Task - gulp litmus
-// gulp.task('litmus',
-// 	gulp.series('build', 'creds', 'litmus')
-// );
+// Mail Task - gulp mail
+gulp.task('mail',
+	gulp.series('build', 'creds', 'mail')
+);
 
-// // Mail Task - gulp mail
-// gulp.task('mail',
-// 	gulp.series('build', 'creds', 'mail')
-// );
+// Litmus Task - gulp litmus
+gulp.task('litmus',
+	gulp.series('build', 'creds', 'litmus')
+);
 
 // Default Task - gulp
 gulp.task('default',

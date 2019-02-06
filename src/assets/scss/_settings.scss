@@ -1,8 +1,6 @@
 //  Foundation for Emails Settings
 //  ------------------------------
-//
 //  Table of Contents:
-//
 //   1. Global
 //   2. Grid
 //   3. Block Grid
@@ -11,12 +9,11 @@
 //   6. Callout
 //   7. Menu
 //   8. Thumbnail
-
+//  ------------------------------
 
 // 1. Global
 // ---------
-// Add custom colors before $primary-color
-// !!!
+
 $primary-color: #2199e8;
 $secondary-color: #ec5686;
 $success-color: #3adb76;
@@ -30,15 +27,15 @@ $white: #fefefe;
 $pre-color: #ff6908;
 $global-width: 600px;
 $global-width-small: 95%;
-$global-gutter: 16px;
-$global-gutter-small: 30px;
+$global-gutter: 30px;
+$global-gutter-small: 20px;
 $body-background: $light-gray;
 $container-background: $white;
 $global-padding: 16px;
 $global-margin: 16px;
 $global-radius: 3px;
 $global-rounded: 500px;
-$global-breakpoint: $global-width + $global-gutter;
+$global-breakpoint: $global-width+$global-gutter;
 
 // 2. Grid
 // -------
@@ -84,8 +81,9 @@ $subheader-font-weight: $global-font-weight;
 $subheader-margin-top: 4px;
 $subheader-margin-bottom: 8px;
 $hr-width: $global-width;
-$hr-border: 1px solid $black;
-$hr-margin: 20px auto;
+$hr-border: 3px solid $black;
+$hr-margin: 0;
+$hr-align: center;
 $anchor-text-decoration: none;
 $anchor-color: $primary-color;
 $anchor-color-visited: $anchor-color;
@@ -103,27 +101,36 @@ $remove-ios-blue: true;
 // ---------
 
 $button-padding: (
-        tiny: 4px 8px 4px 8px,
-        small: 5px 10px 5px 10px,
-        default: 8px 16px 8px 16px,
-        large: 10px 20px 10px 20px,
+	tiny: 4px 8px 4px 8px,
+	small: 5px 10px 5px 10px,
+	default: 8px 16px 8px 16px,
+	large: 10px 20px 10px 20px,
 );
 $button-font-size: (
-        tiny: 10px,
-        small: 12px,
-        default: 16px,
-        large: 20px,
+	tiny: 10px,
+	small: 12px,
+	default: 16px,
+	large: 20px,
 );
 $button-color: $white;
 $button-color-alt: $medium-gray;
 $button-font-weight: bold;
-$button-margin: 0 0 $global-margin 0;
+$button-margin: 0 0 0 0;
 $button-background: $primary-color;
 $button-border-color: $button-background;
 $button-border: 2px solid $button-border-color;
+$button-hover-color: $white;
+$button-hover-background: darken($button-background, 10%);
+$button-hover-border-color: $button-background;
+$button-hover-border: 2px solid darken($button-hover-border-color, 10%);
+$button-color-secondary: $white;
 $button-background-secondary: $secondary-color;
 $button-border-color-secondary: $button-background-secondary;
 $button-border-secondary: 2px solid $button-border-color-secondary;
+$button-hover-color-secondary: $white;
+$button-hover-background-secondary: darken($button-background-secondary, 10%);
+$button-hover-border-color-secondary: $button-background-secondary;
+$button-hover-border-secondary: 2px solid darken($button-hover-border-color-secondary, 10%);
 $button-radius: $global-radius;
 $button-rounded: $global-rounded;
 
@@ -156,3 +163,35 @@ $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
 $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
+
+// 9. Accordion
+// ------------
+
+$accordion-border-color: $medium-gray;
+$accordion-border-thickness: 1px;
+$accordion-header-padding: 17px 15px 17px 15px;
+$accordion-header-background: $light-gray;
+$accordion-header-size: 16px;
+$accordion-header-color: $black;
+$accordion-header-ico-padding: 16px;
+$accordion-header-ico-height: 24px;
+$accordion-header-ico-width: 24px;
+$accordion-content-padding: 17px 15px 17px 15px;
+$accordion-content-background: $white;
+$accordion-content-seperator: false;
+$accordion-content-seperator-style: $accordion-border-thickness solid $accordion-border-color;
+$accordion-content-size: 14px;
+$accordion-content-color: #505050;
+
+// 10. Spacing Utility
+// -------------------
+
+$spacer: 16px;
+$spacers: (
+	none: 0,
+	tiny: ($spacer * .25),
+	small: ($spacer * .5),
+	medium: $spacer,
+	large: ($spacer * 1.5),
+	xlarge: ($spacer * 3)
+);

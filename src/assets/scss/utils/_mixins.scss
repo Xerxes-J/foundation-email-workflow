@@ -1,6 +1,13 @@
-// Font Smoothing
-@mixin font-smoothing($value: on) {
-  @if $value == on {
+//
+// MIXINS
+//
+
+/// Font Smoothing
+/// @group helpers
+/// @param {Boolean} $value - true or false
+/// @output '-webkit-font-smoothing' and '-moz-osx-font-smoothing'
+@mixin font-smoothing($value: true) {
+  @if $value == true {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -10,8 +17,26 @@
   }
 }
 
-// Double Margin (margin-bottom:$px; + Margin-bottom:$px)
-@mixin margin-bottom ($px) {
-  margin-bottom: $px;
-  Margin-bottom: $px;
+/// Double Margin (margin-bottom:$px; + Margin-bottom:$px)
+/// @group helpers
+/// @param {Number} $value - pixel based number
+/// @content [CSS goes inside to be used with mobile]
+/// @output 'margin-bottom' and 'Margin-bottom'
+@mixin margin-bottom ($value) {
+	@if unit($value) == 'px' {
+		margin-bottom: $value;
+		Margin-bottom: $value;
+	}
+	@else {
+		@warn "Make sure `$value` is in px.";
+	}
+}
+
+/// Shortcut for declaring mobile breakpoint
+/// @group helpers
+/// @content [CSS goes inside to be used with mobile]
+@mixin mobile {
+	@media only screen and (max-width: #{$global-breakpoint}) {
+		@content;
+	}
 }

@@ -1,0 +1,576 @@
+//
+// Text Utillity
+//
+
+//
+// Creates classes to use with markup
+//
+
+.u-text {
+	// Alignment
+	@each $breakpoint in (small, large, all) {
+		@if $breakpoint==small {
+			@include mobile {
+				&-#{$breakpoint}--left {
+					text-align: left !important;
+				}
+				&-#{$breakpoint}--right {
+					text-align: right !important;
+				}
+				&-#{$breakpoint}--center {
+					text-align: center !important;
+				}
+				&-#{$breakpoint}--justify {
+					text-align: justify !important;
+				}
+			}
+		}
+		@else if $breakpoint==large {
+			&-#{$breakpoint}--left {
+				text-align: left;
+			}
+			&-#{$breakpoint}--right {
+				text-align: right;
+			}
+			&-#{$breakpoint}--center {
+				text-align: center;
+			}
+			&-#{$breakpoint}--justify {
+				text-align: justify;
+			}
+		}
+		@else if $breakpoint==all {
+			&--left {
+				text-align: left !important;
+			}
+			&--right {
+				text-align: right !important;
+			}
+			&--center {
+				text-align: center !important;
+			}
+			&--justify {
+				text-align: justify !important;
+			}
+		}
+	}
+
+	// White-space
+	@each $breakpoint in (small, large, all) {
+		@if $breakpoint==small {
+			@include mobile {
+				&-#{$breakpoint}--wrap {
+					white-space: normal !important;
+				}
+				&-#{$breakpoint}--nowrap {
+					white-space: nowrap !important;
+				}
+			}
+		}
+		@else if $breakpoint==large {
+			&-#{$breakpoint}--wrap {
+				white-space: normal;
+			}
+			&-#{$breakpoint}--nowrap {
+				white-space: nowrap;
+			}
+		}
+		@else if $breakpoint==all {
+			&--wrap {
+				white-space: normal !important;
+			}
+			&--nowrap {
+				white-space: nowrap !important;
+			}
+		}
+	}
+
+	// Truncate
+	@each $breakpoint in (small, large, all) {
+		@if $breakpoint==small {
+			@include mobile {
+				&-#{$breakpoint}--truncate {
+					overflow: hidden !important;
+					text-overflow: ellipsis !important;
+					white-space: nowrap !important;
+				}
+			}
+		}
+		@else if $breakpoint==large {
+			&-#{$breakpoint}--truncate {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+		@else if $breakpoint==all {
+			&--truncate {
+				overflow: hidden !important;
+				text-overflow: ellipsis !important;
+				white-space: nowrap !important;
+			}
+		}
+	}
+
+	// Transformation
+	@each $breakpoint in (small, large, all) {
+		@if $breakpoint==small {
+			@include mobile {
+				&-#{$breakpoint}--lowercase {
+					text-transform: lowercase !important;
+				}
+				&-#{$breakpoint}--uppercase {
+					text-transform: uppercase !important;
+				}
+				&-#{$breakpoint}--capitalize {
+					text-transform: capitalize !important;
+				}
+			}
+		}
+		@else if $breakpoint==large {
+			&-#{$breakpoint}--lowercase {
+				text-transform: lowercase;
+			}
+			&-#{$breakpoint}--uppercase {
+				text-transform: uppercase;
+			}
+			&-#{$breakpoint}--capitalize {
+				text-transform: capitalize;
+			}
+		}
+		@else if $breakpoint==all {
+			&--lowercase {
+				text-transform: lowercase !important;
+			}
+
+			&--uppercase {
+				text-transform: uppercase !important;
+			}
+
+			&--capitalize {
+				text-transform: capitalize !important;
+			}
+		}
+	}
+
+	// Decoration
+	@each $breakpoint in (small, large, all) {
+		@if $breakpoint==small {
+			@include mobile {
+				&-#{$breakpoint}--strike {
+					text-decoration: line-through !important;
+				}
+				&-#{$breakpoint}--underline {
+					text-decoration: underline !important;
+				}
+				&-#{$breakpoint}--overline {
+					text-decoration: overline !important;
+				}
+			}
+		}
+		@else if $breakpoint==large {
+			&-#{$breakpoint}--strike {
+				text-decoration: line-through;
+			}
+			&-#{$breakpoint}--underline {
+				text-decoration: underline;
+			}
+			&-#{$breakpoint}--overline {
+				text-decoration: overline;
+			}
+		}
+		@else if $breakpoint==all {
+			&--strike {
+				text-decoration: line-through !important;
+			}
+			&--underline {
+				text-decoration: underline !important;
+			}
+			&--overline {
+				text-decoration: overline !important;
+			}
+		}
+	}
+
+	// Style
+	@each $breakpoint in (small, large, all) {
+		@if $breakpoint==small {
+			@include mobile {
+				&-#{$breakpoint}--italic {
+					font-style: italic !important;
+				}
+				&-#{$breakpoint}--normal {
+					font-style: normal !important;
+				}
+				&-#{$breakpoint}--oblique {
+					font-style: oblique !important;
+				}
+			}
+		}
+		@else if $breakpoint==large {
+			&-#{$breakpoint}--italic {
+				font-style: italic;
+			}
+			&-#{$breakpoint}--normal {
+				font-style: normal;
+			}
+			&-#{$breakpoint}--oblique {
+				font-style: oblique;
+			}
+		}
+		@else if $breakpoint==all {
+			&--italic {
+				font-style: italic !important;
+			}
+			&--normal {
+				font-style: normal !important;
+			}
+			&--oblique {
+				font-style: oblique !important;
+			}
+		}
+	}
+
+	// Weight
+	@each $breakpoint in (small, large, all) {
+		@if $breakpoint==small {
+			@include mobile {
+				&-weight-#{$breakpoint}--lighter {
+					font-weight: lighter !important;
+				}
+				&-weight-#{$breakpoint}--normal {
+					font-weight: normal !important;
+				}
+				&-weight-#{$breakpoint}--bold {
+					font-weight: bold !important;
+				}
+				&-weight-#{$breakpoint}--bolder {
+					font-weight: bolder !important;
+				}
+			}
+		}
+		@else if $breakpoint==large {
+			&-weight-#{$breakpoint}--lighter {
+				font-weight: lighter;
+			}
+			&-weight-#{$breakpoint}--normal {
+				font-weight: normal;
+			}
+			&-weight-#{$breakpoint}--bold {
+				font-weight: bold;
+			}
+			&-weight-#{$breakpoint}--bolder {
+				font-weight: bolder;
+			}
+		}
+		@else if $breakpoint==all {
+			&-weight--lighter {
+				font-weight: lighter !important;
+			}
+			&-weight--normal {
+				font-weight: normal !important;
+			}
+			&-weight--bold {
+				font-weight: bold !important;
+			}
+			&-weight--bolder {
+				font-weight: bolder !important;
+			}
+		}
+	}
+}
+
+//
+// Creates mixins to use with SCSS
+//
+
+/// Text alignment for text element or container
+/// @group helpers
+/// @param {Text} $alignment - left, center, right, or justify
+/// @param {Text} $breakpoint [all] - all, small, or large
+/// @output 'text-align'
+@mixin u-text-alignment($alignment, $breakpoint: all) {
+	@if $breakpoint==small {
+		@include mobile {
+			@if $alignment==left {
+				text-align: left !important;
+			}
+			@else if $alignment==center {
+				text-align: center !important;
+			}
+			@else if $alignment==right {
+				text-align: right !important;
+			}
+			@else if $alignment==justify {
+				text-align: justify !important;
+			}
+		}
+	}
+	@else if $breakpoint==large {
+		@if $alignment==left {
+			text-align: left;
+		}
+		@else if $alignment==center {
+			text-align: center;
+		}
+		@else if $alignment==right {
+			text-align: right;
+		}
+		@else if $alignment==justify {
+			text-align: justify;
+		}
+	}
+	@else if $breakpoint==all {
+		@if $alignment==left {
+			text-align: left !important;
+		}
+		@else if $alignment==center {
+			text-align: center !important;
+		}
+		@else if $alignment==right {
+			text-align: right !important;
+		}
+		@else if $alignment==justify {
+			text-align: justify !important;
+		}
+	}
+}
+
+/// Text transform for text element or container
+/// @group helpers
+/// @param {Text} $transformation - lowercase, uppercase, or capitalize
+/// @param {Text} $breakpoint [all] - all, small, or large
+/// @output 'text-transform'
+@mixin u-text-transform($transformation, $breakpoint: all) {
+	@if $breakpoint==small {
+		@include mobile {
+			@if $transformation==lowercase {
+				text-transform: lowercase !important;
+			}
+			@else if $transformation==uppercase {
+				text-transform: uppercase !important;
+			}
+			@else if $transformation==capitalize {
+				text-transform: capitalize !important;
+			}
+		}
+	}
+	@else if $breakpoint==large {
+		@if $transformation==lowercase {
+			text-transform: lowercase;
+		}
+		@else if $transformation==uppercase {
+			text-transform: uppercase;
+		}
+		@else if $transformation==capitalize {
+			text-transform: capitalize;
+		}
+	}
+	@else if $breakpoint==all {
+		@if $transformation==lowercase {
+			text-align: lowercase !important;
+		}
+		@else if $transformation==uppercase {
+			text-align: uppercase !important;
+		}
+		@else if $transformation==capitalize {
+			text-align: capitalize !important;
+		}
+	}
+}
+
+/// Text decoration for text element or container
+/// @group helpers
+/// @param {Text} $decoration - strike, underline, or overline
+/// @param {Text} $breakpoint [all] - all, small, or large
+/// @output 'text-decoration'
+@mixin u-text-decoration($decoration, $breakpoint: all) {
+	@if $breakpoint==small {
+		@include mobile {
+			@if $decoration==strike {
+				text-decoration: strike !important;
+			}
+			@else if $decoration==underline {
+				text-decoration: underline !important;
+			}
+			@else if $decoration==overline {
+				text-decoration: overline !important;
+			}
+		}
+	}
+	@else if $breakpoint==large {
+		@if $decoration==strike {
+			text-decoration: strike;
+		}
+		@else if $decoration==underline {
+			text-decoration: underline;
+		}
+		@else if $decoration==overline {
+			text-decoration: overline;
+		}
+	}
+	@else if $breakpoint==all {
+		@if $decoration==strike {
+			text-decoration: strike !important;
+		}
+		@else if $decoration==underline {
+			text-decoration: underline !important;
+		}
+		@else if $decoration==overline {
+			text-decoration: overline !important;
+		}
+	}
+}
+
+/// Text style for text element or container
+/// @group helpers
+/// @param {Text} $style - italic, normal, or oblique
+/// @param {Text} $breakpoint [all] - all, small, or large
+/// @output 'font-style'
+@mixin u-text-style($style, $breakpoint: all) {
+	@if $breakpoint==small {
+		@include mobile {
+			@if $style==italic {
+				font-style: strike !important;
+			}
+			@else if $style==normal {
+				font-style: normal !important;
+			}
+			@else if $style==oblique {
+				font-style: oblique !important;
+			}
+		}
+	}
+	@else if $breakpoint==large {
+		@if $style==italic {
+			font-style: italic;
+		}
+		@else if $style==normal {
+			font-style: normal;
+		}
+		@else if $style==oblique {
+			font-style: oblique;
+		}
+	}
+	@else if $breakpoint==all {
+		@if $style==italic {
+			font-style: italic !important;
+		}
+		@else if $style==normal {
+			font-style: normal !important;
+		}
+		@else if $style==oblique {
+			font-style: oblique !important;
+		}
+	}
+}
+
+/// Text weight for text element or container
+/// @group helpers
+/// @param {Text} $weight - lighter, normal, bold, or bolder
+/// @param {Text} $breakpoint [all] - all, small, or large
+/// @output 'font-weight'
+@mixin u-text-weight($weight, $breakpoint: all) {
+	@if $breakpoint==small {
+		@include mobile {
+			@if $weight==lighter {
+				font-weight: lighter !important;
+			}
+			@else if $weight==normal {
+				font-weight: normal !important;
+			}
+			@else if $weight==bold {
+				font-weight: bold !important;
+			}
+			@else if $weight==bolder {
+				font-weight: bolder !important;
+			}
+		}
+	}
+	@else if $breakpoint==large {
+		@if $weight==lighter {
+			font-weight: lighter;
+		}
+		@else if $weight==normal {
+			font-weight: normal;
+		}
+		@else if $weight==bold {
+			font-weight: bold;
+		}
+		@else if $weight==bolder {
+			font-weight: bolder;
+		}
+	}
+	@else if $breakpoint==all {
+		@if $weight==lighter {
+			font-weight: lighter !important;
+		}
+		@else if $weight==normal {
+			font-weight: normal !important;
+		}
+		@else if $weight==bold {
+			font-weight: bold !important;
+		}
+		@else if $weight==bolder {
+			font-weight: bolder !important;
+		}
+	}
+}
+
+/// Text white-space for text element or container
+/// @group helpers
+/// @param {Text} $space - normal or nowrap
+/// @param {Text} $breakpoint [all] - all, small, or large
+/// @output 'white-space'
+@mixin u-text-white-space($space, $breakpoint: all) {
+	@if $breakpoint==small {
+		@include mobile {
+			@if $space==normal {
+				white-space: normal !important;
+			}
+			@else if $space==nowrap {
+				white-space: nowrap !important;
+			}
+		}
+	}
+	@else if $breakpoint==large {
+		@if $space==normal {
+			white-space: normal;
+		}
+		@else if $space==nowrap {
+			white-space: nowrap;
+		}
+	}
+	@else if $breakpoint==all {
+		@if $space==normal {
+			white-space: normal !important;
+		}
+		@else if $space==nowrap {
+			white-space: nowrap !important;
+		}
+	}
+}
+
+/// Text truncate for text element
+/// @group helpers
+/// @param {Text} $breakpoint [all] - all, small, or large
+/// @output 'overflow', 'text-overflow', and 'white-space'
+@mixin u-text-truncate($breakpoint: all) {
+	@if $breakpoint==small {
+		@include mobile {
+			overflow: hidden !important;
+			text-overflow: ellipsis !important;
+			white-space: nowrap !important;
+		}
+	}
+	@else if $breakpoint==large {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	@else if $breakpoint==all {
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
+		white-space: nowrap !important;
+	}
+}

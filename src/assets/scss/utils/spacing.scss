@@ -1,0 +1,697 @@
+//
+// Spacing Utillity
+//
+
+// The classes are named using the format u-{property}{sides}-{size} for both breakpoints and u-{property}{sides}-{breakpoint}--{size} for small and large breakpoints.
+
+// Where property is one of:
+// m - for classes that set margin
+// p - for classes that set padding
+
+// Where sides is one of:
+// t - for classes that set margin-top or padding-top
+// b - for classes that set margin-bottom or padding-bottom
+// l - for classes that set margin-left or padding-left
+// r - for classes that set margin-right or padding-right
+// x - for classes that set both *-left and *-right (used for padding)
+// y - for classes that set both *-top and *-bottom (used for padding)
+// blank - for classes that set a margin or padding on all 4 sides of the element (used for padding)
+
+// Where size is one of:
+// none - for classes that eliminate the margin or padding by setting it to 0
+// tiny - (by default) for classes that set the margin or padding to $spacer * .25
+// small - (by default) for classes that set the margin or padding to $spacer * .5
+// medium - (by default) for classes that set the margin or padding to $spacer
+// large - (by default) for classes that set the margin or padding to $spacer * 1.5
+// xlarge - (by default) for classes that set the margin or padding to $spacer * 3
+// auto - for classes that set the margin to auto
+
+//
+// Creates classes to use with markup
+//
+
+@each $breakpoint in (small, large, all) {
+	@each $prop,
+	$abbrev in (margin: m, padding: p) {
+		@each $size,
+		$length in $spacers {
+			// for mobile only
+			@if $breakpoint==small {
+				@include mobile {
+					.u-#{$abbrev}t-#{$breakpoint}--#{$size},
+					.u-#{$abbrev}y-#{$breakpoint}--#{$size} {
+						#{$prop}-top: #{$length} !important;
+					}
+					.u-#{$abbrev}b-#{$breakpoint}--#{$size},
+					.u-#{$abbrev}y-#{$breakpoint}--#{$size} {
+						#{$prop}-bottom: #{$length} !important;
+					}
+					.u-#{$abbrev}l-#{$breakpoint}--#{$size},
+					.u-#{$abbrev}x-#{$breakpoint}--#{$size} {
+						#{$prop}-left: #{$length} !important;
+					}
+					.u-#{$abbrev}r-#{$breakpoint}--#{$size},
+					.u-#{$abbrev}x-#{$breakpoint}--#{$size} {
+						#{$prop}-right: #{$length} !important;
+					}
+				}
+			}
+			// for large only
+			@else if $breakpoint==large {
+				.u-#{$abbrev}t-#{$breakpoint}--#{$size},
+				.u-#{$abbrev}y-#{$breakpoint}--#{$size} {
+					#{$prop}-top: #{$length};
+				}
+				.u-#{$abbrev}b-#{$breakpoint}--#{$size},
+				.u-#{$abbrev}y-#{$breakpoint}--#{$size} {
+					#{$prop}-bottom: #{$length};
+				}
+				.u-#{$abbrev}l-#{$breakpoint}--#{$size},
+				.u-#{$abbrev}x-#{$breakpoint}--#{$size} {
+					#{$prop}-left: #{$length};
+				}
+				.u-#{$abbrev}r-#{$breakpoint}--#{$size},
+				.u-#{$abbrev}x-#{$breakpoint}--#{$size} {
+					#{$prop}-right: #{$length};
+				}
+			}
+			// for all
+			@else if $breakpoint==all {
+				.u-#{$abbrev}t--#{$size},
+				.u-#{$abbrev}y--#{$size} {
+					#{$prop}-top: #{$length} !important;
+				}
+				.u-#{$abbrev}b--#{$size},
+				.u-#{$abbrev}y--#{$size} {
+					#{$prop}-bottom: #{$length} !important;
+				}
+				.u-#{$abbrev}l--#{$size},
+				.u-#{$abbrev}x--#{$size} {
+					#{$prop}-left: #{$length} !important;
+				}
+				.u-#{$abbrev}r--#{$size},
+				.u-#{$abbrev}x--#{$size} {
+					#{$prop}-right: #{$length} !important;
+				}
+			}
+		}
+	}
+
+	// Aligns center
+	@if $breakpoint==small {
+		@include mobile {
+			.u-mx-small--auto {
+				margin-left: auto !important;
+				margin-right: auto !important;
+			}
+		}
+	}
+	@else if $breakpoint==large {
+		.u-mx-large--auto {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	@else if $breakpoint==all {
+		.u-mx--auto {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+	}
+}
+
+//
+// Creates mixins to use with SCSS
+//
+
+/// Text alignment for text element or container
+/// @group helpers
+/// @param {Text} $property - margin or padding
+/// @param {Text} $sides - top, bottom, left, right, x, or none
+/// @param {Text} $size - none, tiny, small, medium, large, xlarge, or auto
+/// @param {Text} $breakpoint [all] - all, small, or large
+@mixin u-spacing($property, $sides, $size, $breakpoint: all) {
+	// small breakpoint only...
+	@if $breakpoint==small {
+		@include mobile {
+			// margin
+			@if $property==margin {
+				// margin-top
+				@if $sides==top {
+					@if $size==none {
+						margin-top: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						margin-top: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						margin-top: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						margin-top: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						margin-top: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						margin-top: map-get($spacers, xlarge) !important;
+					}
+				}
+				// margin-bottom
+				@if $sides==bottom {
+					@if $size==none {
+						margin-bottom: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						margin-bottom: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						margin-bottom: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						margin-bottom: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						margin-bottom: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						margin-bottom: map-get($spacers, xlarge) !important;
+					}
+				}
+				// margin-left
+				@if $sides==left {
+					@if $size==none {
+						margin-left: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						margin-left: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						margin-left: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						margin-left: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						margin-left: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						margin-left: map-get($spacers, xlarge) !important;
+					}
+				}
+				// margin-right
+				@if $sides==right {
+					@if $size==none {
+						margin-right: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						margin-right: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						margin-right: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						margin-right: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						margin-right: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						margin-right: map-get($spacers, xlarge) !important;
+					}
+				}
+				// margin-right & margin-left
+				@if $sides==x {
+					@if $size==auto {
+						margin-left: auto !important;
+						margin-right: auto !important;
+					}
+					@else {
+						@warn "`$size` can only be auto";
+					}
+				}
+			}
+			// padding
+			@else if $property==padding {
+				// padding-top
+				@if $sides==top {
+					@if $size==none {
+						padding-top: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						padding-top: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						padding-top: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						padding-top: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						padding-top: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						padding-top: map-get($spacers, xlarge) !important;
+					}
+				}
+				// padding-bottom
+				@if $sides==bottom {
+					@if $size==none {
+						padding-bottom: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						padding-bottom: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						padding-bottom: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						padding-bottom: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						padding-bottom: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						padding-bottom: map-get($spacers, xlarge) !important;
+					}
+				}
+				// padding-left
+				@if $sides==left {
+					@if $size==none {
+						padding-left: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						padding-left: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						padding-left: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						padding-left: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						padding-left: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						padding-left: map-get($spacers, xlarge) !important;
+					}
+				}
+				// padding-right
+				@if $sides==right {
+					@if $size==none {
+						padding-right: map-get($spacers, none) !important;
+					}
+					@else if $size==tiny {
+						padding-right: map-get($spacers, tiny) !important;
+					}
+					@else if $size==small {
+						padding-right: map-get($spacers, small) !important;
+					}
+					@else if $size==medium {
+						padding-right: map-get($spacers, medium) !important;
+					}
+					@else if $size==large {
+						padding-right: map-get($spacers, large) !important;
+					}
+					@else if $size==xlarge {
+						padding-right: map-get($spacers, xlarge) !important;
+					}
+				}
+			}
+		}
+	}
+	// large breakpoint only...
+	@else if $breakpoint==large {
+		// margin
+		@if $property==margin {
+			// margin-top
+			@if $sides==top {
+				@if $size==none {
+					margin-top: map-get($spacers, none)
+				}
+				@else if $size==tiny {
+					margin-top: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					margin-top: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					margin-top: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					margin-top: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					margin-top: map-get($spacers, xlarge);
+				}
+			}
+			// margin-bottom
+			@if $sides==bottom {
+				@if $size==none {
+					margin-bottom: map-get($spacers, none);
+				}
+				@else if $size==tiny {
+					margin-bottom: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					margin-bottom: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					margin-bottom: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					margin-bottom: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					margin-bottom: map-get($spacers, xlarge);
+				}
+			}
+			// margin-left
+			@if $sides==left {
+				@if $size==none {
+					margin-left: map-get($spacers, none);
+				}
+				@else if $size==tiny {
+					margin-left: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					margin-left: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					margin-left: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					margin-left: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					margin-left: map-get($spacers, xlarge);
+				}
+			}
+			// margin-right
+			@if $sides==right {
+				@if $size==none {
+					margin-right: map-get($spacers, none);
+				}
+				@else if $size==tiny {
+					margin-right: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					margin-right: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					margin-right: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					margin-right: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					margin-right: map-get($spacers, xlarge);
+				}
+			}
+			// margin-right & margin-left
+			@if $sides==x {
+				@if $size==auto {
+					margin-left: auto;
+					margin-right: auto;
+				}
+				@else {
+					@warn "`$size` can only be auto";
+				}
+			}
+		}
+		// padding
+		@else if $property==padding {
+			// padding-top
+			@if $sides==top {
+				@if $size==none {
+					padding-top: map-get($spacers, none);
+				}
+				@else if $size==tiny {
+					padding-top: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					padding-top: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					padding-top: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					padding-top: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					padding-top: map-get($spacers, xlarge);
+				}
+			}
+			// padding-bottom
+			@if $sides==bottom {
+				@if $size==none {
+					padding-bottom: map-get($spacers, none);
+				}
+				@else if $size==tiny {
+					padding-bottom: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					padding-bottom: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					padding-bottom: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					padding-bottom: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					padding-bottom: map-get($spacers, xlarge);
+				}
+			}
+			// padding-left
+			@if $sides==left {
+				@if $size==none {
+					padding-left: map-get($spacers, none);
+				}
+				@else if $size==tiny {
+					padding-left: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					padding-left: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					padding-left: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					padding-left: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					padding-left: map-get($spacers, xlarge);
+				}
+			}
+			// padding-right
+			@if $sides==right {
+				@if $size==none {
+					padding-right: map-get($spacers, none);
+				}
+				@else if $size==tiny {
+					padding-right: map-get($spacers, tiny);
+				}
+				@else if $size==small {
+					padding-right: map-get($spacers, small);
+				}
+				@else if $size==medium {
+					padding-right: map-get($spacers, medium);
+				}
+				@else if $size==large {
+					padding-right: map-get($spacers, large);
+				}
+				@else if $size==xlarge {
+					padding-right: map-get($spacers, xlarge);
+				}
+			}
+		}
+	}
+	// both breakpoints
+	@else if $breakpoint==all {
+		// margin
+		@if $property==margin {
+			// margin-top
+			@if $sides==top {
+				@if $size==none {
+					margin-top: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					margin-top: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					margin-top: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					margin-top: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					margin-top: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					margin-top: map-get($spacers, xlarge) !important;
+				}
+			}
+			// margin-bottom
+			@if $sides==bottom {
+				@if $size==none {
+					margin-bottom: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					margin-bottom: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					margin-bottom: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					margin-bottom: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					margin-bottom: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					margin-bottom: map-get($spacers, xlarge) !important;
+				}
+			}
+			// margin-left
+			@if $sides==left {
+				@if $size==none {
+					margin-left: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					margin-left: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					margin-left: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					margin-left: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					margin-left: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					margin-left: map-get($spacers, xlarge) !important;
+				}
+			}
+			// margin-right
+			@if $sides==right {
+				@if $size==none {
+					margin-right: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					margin-right: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					margin-right: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					margin-right: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					margin-right: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					margin-right: map-get($spacers, xlarge) !important;
+				}
+			}
+			// margin-right & margin-left
+			@if $sides==x {
+				@if $size==auto {
+					margin-left: auto !important;
+					margin-right: auto !important;
+				}
+				@else {
+					@warn "`$size` can only be auto";
+				}
+			}
+		}
+		// padding
+		@else if $property==padding {
+			// padding-top
+			@if $sides==top {
+				@if $size==none {
+					padding-top: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					padding-top: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					padding-top: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					padding-top: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					padding-top: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					padding-top: map-get($spacers, xlarge) !important;
+				}
+			}
+			// padding-bottom
+			@if $sides==bottom {
+				@if $size==none {
+					padding-bottom: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					padding-bottom: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					padding-bottom: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					padding-bottom: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					padding-bottom: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					padding-bottom: map-get($spacers, xlarge) !important;
+				}
+			}
+			// padding-left
+			@if $sides==left {
+				@if $size==none {
+					padding-left: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					padding-left: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					padding-left: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					padding-left: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					padding-left: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					padding-left: map-get($spacers, xlarge) !important;
+				}
+			}
+			// padding-right
+			@if $sides==right {
+				@if $size==none {
+					padding-right: map-get($spacers, none) !important;
+				}
+				@else if $size==tiny {
+					padding-right: map-get($spacers, tiny) !important;
+				}
+				@else if $size==small {
+					padding-right: map-get($spacers, small) !important;
+				}
+				@else if $size==medium {
+					padding-right: map-get($spacers, medium) !important;
+				}
+				@else if $size==large {
+					padding-right: map-get($spacers, large) !important;
+				}
+				@else if $size==xlarge {
+					padding-right: map-get($spacers, xlarge) !important;
+				}
+			}
+		}
+	}
+}

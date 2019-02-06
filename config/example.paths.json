@@ -19,10 +19,10 @@
 		"build": "./build/assets/img/"
 	},
 	"FTP": {
-		"domain": "clients.pappasgroup.com/",
-		"src": "web/content/test/email",
+		"domain": "your-site.com/",
+		"src": "web/content/project/folder",
 		"image": "assets/img/",
-		"full": "http://clients.pappasgroup.com/test/email/"
+		"full": "http://your-site.com/project/folder"
 	},
 	"DATA": "./src/data/",
 	"CONFIG": "./config/",
