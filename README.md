@@ -120,8 +120,8 @@ yarn install
 
 `yarn deploy` - Runs `yarn build`, but deploy's each compiled email using SFTP(3) to a hosted server.
 
-1. *Litmus credentials are required `config/config.json`*\
-2. *SMTP server details are required `config/config.json`*\
+1. *Litmus credentials are required `config/config.json`*
+2. *SMTP server details are required `config/config.json`*
 3. *Server information `config/config.json` and image path are required `config/paths.json`*
 
 ## Configuration
@@ -147,10 +147,10 @@ Running the deploy command will SFTP all generated HTML and images to our specif
 ```json
 {
   "FTP" : {
-    "host" : "YOUR_HOSTED_SERVER", // FTP host, default is localhost
-    "user" : "YOUR_USERNAME", // FTP user, default is anonymous
-    "password" : "YOUR_PASSWORD", // FTP password, default is anonymous
-    "parallel" : 10 // Number of parallel transfers
+    "host" : "YOUR_HOSTED_SERVER",
+    "user" : "YOUR_USERNAME",
+    "password" : "YOUR_PASSWORD",
+    "parallel" : 10
   }
 }
 ```
@@ -160,9 +160,9 @@ Running the deploy command will SFTP all generated HTML and images to our specif
 ```json
 {
   "ftp" : {
-    "base" : "HTTPS://WWW.DOMAIN.COM/", // Domain of server
-    "src" : "CLIENT/EMAILS/", // folder path for project root
-    "image" : "ASSETS/IMG" // folder path for images
+    "base" : "HTTPS://WWW.DOMAIN.COM/",
+    "src" : "CLIENT/EMAILS/",
+    "image" : "ASSETS/IMG"
   }
 }
 ```
