@@ -3,137 +3,219 @@
 
 **Please open all issues regarding the framework on the main [Foundation for Emails](http://github.com/zurb/foundation-emails/issues) repo.**
 
-This is the modified starter project for [Foundation for Emails](http://foundation.zurb.com/emails), a framework for creating responsive HTML devices that work in any email client. It has a Gulp-powered build system with these features:
+This is the modified starter project for [Foundation for Emails](http://foundation.zurb.com/emails), a framework for creating responsive HTML devices that work in any email client. It has a Gulp-powered build system with the following features:
 
- - Handlebars HTML templates
- - Simplified HTML email syntax
- - Sass compilation
- - Image compression
- - Built-in BrowserSync server
- - Full email inlining process
- - Automated litmus testing
- - Full email minimization
- - Send manual email tests
- - Deploy images to hosted server
- - Zip emails by HTML and images
-
+- Handlebars HTML templates with [Assemble](https://github.com/assemble/assemble)
+- Simplified email syntax with [Inky](https://github.com/zurb/inky)
+- Sass compilation
+- Image compression
+- Built-in BrowserSync server
+- Full email inlining process
+- Full email minimization
+- Send manual email tests
+- Automated litmus testing
+- Deploy HTML/images to server
+- Zip final emails with associated images
 
 ## Installation
-To use this template, your computer needs to have [Node.js](https://nodejs.org/en/) 0.12 or greater.
+
+To use this template, your computer needs:
+
+- **NodeJS** (Version 6 or greater recommended, tested with 6.11.4 and 8.12.0)
+- **Yarn**
 
 ### Setup
-To set up the template, run the following command:
+
+To set up the workflow, open the folder in your command line, and install the needed dependencies:
 
 ```bash
-cd projectname
-npm i
+cd project-folder
+yarn install
 ```
 
+## Folder Structure
 
+### Top-level Directory
+
+```plain-text
+  .
+  ├── build                   # Compiled files
+  ├── config                  # Configuration files
+  ├── gulp                    # Gulp automation files
+  ├── node_modules            # Packaged files used for Gulp
+  ├── src                     # Source files
+  ├── .babelrc                # Project-wide configuration file for babel
+  ├── gulpfile.babel.js       # Root Gulp file
+  ├── package.json            # Manifest file for modules
+  └── README.md
+```
+
+### Source Directory
+
+```plain-text
+  .
+  ├── ...
+  ├── src                                   # Source files
+  │   ├── assets                            # Assets files (images and scss)
+  │   │   ├── img                           # Image files (group images in folders for organization)
+  │   │   │   ├── icons
+  │   │   │   ├── logos
+  │   │   │   └── hero
+  │   │   └── scss                          # SCSS files
+  │   │       ├── components                # Common Components
+  │   │       │   └── _all.scss             # Include to get all components
+  │   │       ├── templates                 # Templates
+  │   │       │   └── _all.scss             # Include to get all templates
+  │   │       ├── utils                     # Stores helpers, functions, and mixins
+  │   │       │   └── _all.scss             # Include to get all helpers, functions, and mixins
+  │   │       │   └── functions.scss        # Global functions
+  │   │       │   └── mixins.scss           # Global mixins
+  │   │       │   └── spacing.scss          # Helper classes and mixins for spacing
+  │   │       │   └── text.scss             # Helper classes and mixins for text styling
+  │   │       ├── _settings_.scss           # Global variables
+  │   │       └── style.scss                # Primary SCSS file
+  │   └── html                              # HTML/Handlebar files
+  │       ├── emails                        # Email files (extension can be either .html, .hbs, or .handlebars)
+  │       │   └── styleguide.hbs            # Generates style-guide with all components from framework
+  │       ├── helpers                       # Helper files (handlebar helper are .js files)
+  │       ├── layouts                       # Layout files (extension can be either .html, .hbs, or .handlebars)
+  │       │   └── default.hbs               # One layout must be named default
+  │       └── partials                      # Partial files (extension can be either .html, .hbs, or .handlebars)
+  │           └── preview-text.hbs          # Generates preview-text
+  .
+```
+
+### Build Directory
+
+```plain-text
+  .
+  ├── ...
+  ├── build                                 # Build files
+  │   ├── assets                            # Assets files (images and css)
+  │   │   ├── img                           # Image files
+  │   │   └── css                           # CSS files
+  │   │       ├── styleguide.scss           # Stores styles pertaining to email
+  │   │       └── style.css                 # Stores all styles
+  │   ├── minified                          # Minified files
+  │   ├── zip                               # Zipped files (HTML and associated images)
+  │   └── styleguide.html                   # Compiled HTML is placed in root of build folder
+  .
+```
 
 ## Build Commands
 
-Run `npm start` to kick off the build process. A new browser tab will open with a server pointing to your project files.
+`yarn start` - Kicks of the build process, as a new browser tab will open with a server pointing to your compiled files found on `~/build/`. The server url will be using the port number defined in `~/config/config.json` which by default is `3000`.
 
-Run `npm run build` to inline your CSS into your HTML along with the rest of the build process.
+`yarn build` - Once you've finalized your email, run this command for the following actions:
 
-Run `npm run litmus` to build as above, then submit to litmus for testing. *Litmus credentials are required (config/config.json)*
+1. Inlines CSS into your HTML
+2. Compresses images
+3. Creates separate minified version found in `~/build/minified/`
 
-Run `npm run mail` to build as above, then send to specified email address for testing. *SMTP server details required (config/config.json)*
+`yarn litmus` - Runs `yarn build`, but submits each compiled email to Litmus(1) for client testing.
 
-Run `npm run zip` to build as above, then zip HTML and images for easy deployment to email marketing services.
+`yarn mail` - Runs `yarn build`, but sends each compiled email to a specified email address for manually testing using node-mailer(2).
 
-Run `npm run deploy` to build as above, then FTP's HTML and images to hosted server. *Server details (config/config.json) and image path required (config/paths.json)*
+`yarn zip` - Runs `yarn build`, but zips up each compiled email with its associated images for easy deployment.
 
-Run `npm run framework` to install the latest version of foundation-for-emails 2 framework using bower.
+`yarn deploy` - Runs `yarn build`, but deploy's each compiled email using SFTP(3) to a hosted server.
 
-
+1. *Litmus credentials are required `config/config.json`*\
+2. *SMTP server details are required `config/config.json`*\
+3. *Server information `config/config.json` and image path are required `config/paths.json`*
 
 ## Configuration
 
-### Browser-sync (config.json)
-When running browser-sync, by default it will use port `3000`. To change to a new port, you can either replace the configured in the `config/config.json` file or added as a parameter like so: `npm run start -- --port="3000"`.
+### Setting up port number for browser-sync
 
-#### Config.json
+When running browser-sync, by default it will use port `3000`. To change to a new port, you can either replace whats configured in the `config/config.json` file.
+
+#### config.json
+
 ```json
 {
-  "PORT" : "3000"
+  "PORT" : "3000" // use any number between 0 - 9999
 }
 ```
 
-### Deploy (config.json + paths.json)
-Running deploy will FTP all generated HTML and images to our specified hosted server in `config/paths.json`. The FTP credentials can be configured in the `config/config.json` file.
+### Deployment through SFTP
 
-#### Config.json
+Running the deploy command will SFTP all generated HTML and images to our specified hosted server configured in `config/paths.json`.
+
+#### config.json
+
 ```json
 {
   "FTP" : {
-      "host" : "YOUR_HOSTED_SERVER",
-      "user" : "YOUR_USERNAME",
-      "password" : "YOUR_PASSWORD",
-      "parallel" : 10
+    "host" : "YOUR_HOSTED_SERVER", // FTP host, default is localhost
+    "user" : "YOUR_USERNAME", // FTP user, default is anonymous
+    "password" : "YOUR_PASSWORD", // FTP password, default is anonymous
+    "parallel" : 10 // Number of parallel transfers
   }
 }
 ```
 
-#### Paths.json
+#### paths.json
+
 ```json
 {
   "ftp" : {
-      "base" : "HTTPS://WWW.DOMAIN.COM/",
-      "src" : "CLIENT/EMAILS/",
-      "image" : "ASSETS/IMG"
+    "base" : "HTTPS://WWW.DOMAIN.COM/", // Domain of server
+    "src" : "CLIENT/EMAILS/", // folder path for project root
+    "image" : "ASSETS/IMG" // folder path for images
   }
 }
 ```
 
+### Email client testing using Litmus
 
-### Litmus Tests (config.json)
+Testing in Litmus requires the images to be hosted publicly. Provide your Litmus account details to `config/config.json`.
 
-Testing in Litmus requires the images to be hosted publicly. The provided gulp task handles this by automating hosting to our ftp server configured in `config/config.json` and `config/paths.json`. Provide your Litmus account details to `config/config.json`. *Litmus config is a requirement!*
+#### config.json
 
-#### Config.json
 ```json
 {
   "LITMUS": {
     "username": "YOUR_LITMUS@EMAIL.COM",
     "password": "YOUR_ACCOUNT_PASSWORD",
-    "url": "https://YOUR_ACCOUNT.LITMUS.COM",
+    "url": "HTTPS://YOUR_ACCOUNT.LITMUS.COM",
     "applications": ["ol2003","ol2007","ol2010","ol2011","ol2013","chromegmailnew","chromeyahoo","appmail9","iphone5s","ipad","android4","androidgmailapp"]
   }
 }
 ```
 
-For a full list of Litmus' supported test clients(applications) see their [client list](https://litmus.com/emails/clients.xml).
+**NOTE:** A Litmus account is required to be able to use this feature!
 
+- For a full list of Litmus' supported test clients (applications) see their [client list](https://litmus.com/emails/clients.xml). Each `<application_code>` tag contains the name of the client. Example: Gmail Chrome would be `<application_code> chromegmailnew </application_code>`.
 
-### Manual email test (config.json)
+### Manually send test emails to specified address
 
-Similar to the Litmus tests, you can have each email sent to a specified email address. Just like with the Litmus tests, you will need to specify details of an SMTP server. The recipient email address can either be configured in the `config/config.json` file or added as a parameter like so: `npm run mail -- --to="example.com"`
+Similar to the Litmus tests, you can have each email sent to a specified email address. Just like with the Litmus tests, you will need to specify details of an SMTP server. The recipient email address can either be configured in the `config/config.json` file or added as a parameter like so: `yarn mail --to="email@gmail.com"`
 
 ```json
 {
-  "MAIL" : {
+  "MAIL": {
+    "from": "DMI EMAIL BOT", // name used for from
     "to": [
-      "RECIPEINT_EMAIL@DOMAIN.COM"
+      "TEST@GMAIL.COM" // can add more than one email address for testing
     ],
-    "from": "COMPANY_NAME <INFO@COMPANY.COM",
     "smtp": {
-     "auth": {
-       "user": "EMAIL@DOMAIN.COM",
-       "pass": "YOUR_ACCOUNT_PASSWORD"
-     },
-      "host": "SMTP.DOMAIN.COM",
-      "secureConnection": true,
-      "port": 465
+      "auth": {
+        "user": "YOUR_EMAIL@DOMAIN.COM",
+        "client_id": "",
+        "client_secret": "",
+        "authorization_code": "",
+        "refresh_token": ""
+      }
     }
   }
 }
 ```
+
 **NOTE:** For this task to work you'll need to have an SMTP account and provide the necessary credentials.
 
-
 ## Framework
+
 Foundation for Emails (previously known as Ink) is a framework for creating responsive HTML emails that work in any email client — even Outlook. Our HTML/CSS components have been tested across every major email client to ensure consistency. And with the Inky templating language, writing HTML emails is now even easier.
 
 For further reading and documentation please visit: [Foundation for Emails 2 Doc](http://foundation.zurb.com/emails/docs/)

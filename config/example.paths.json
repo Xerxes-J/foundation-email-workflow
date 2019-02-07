@@ -5,10 +5,10 @@
 		"archive": "./_archive/"
 	},
 	"TEMPLATES": {
-		"partials": "./src/templates/partials/",
-		"layouts": "./src/templates/layouts/",
-		"emails": "./src/templates/emails/",
-		"helpers": "./src/templates/helpers/"
+		"partials": "./src/html/partials/",
+		"layouts": "./src/html/layouts/",
+		"emails": "./src/html/emails/",
+		"helpers": "./src/html/helpers/"
 	},
 	"STYLES": {
 		"src": "./src/assets/scss/",

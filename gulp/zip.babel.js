@@ -8,7 +8,7 @@ import colors from 'colors';
 const $ = plugins();
 
 //  Grab Paths
-const EMAIL_PATH = './src/templates/emails/';
+const EMAIL_PATH = './src/html/emails/';
 const DIST_PATH = './build';
 const EXT = '.html';
 

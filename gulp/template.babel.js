@@ -7,7 +7,6 @@ import colors from 'colors';
 
 //  Grab Paths
 const CONFIG_PATH = './config/paths.json';
-const EMAIL_PATH = './src/templates/emails/';
 const PATHS = fs.readJsonSync(CONFIG_PATH);
 
 // assemble instance
@@ -27,7 +26,7 @@ const generateTemplate = (done) => {
 
 const compileEmails = () => {
 	// Terminal Message: List emails by name that are being generated
-	fs.readdir(EMAIL_PATH, function (err, items) {
+	fs.readdir(PATHS.TEMPLATES.emails, function (err, items) {
 		console.log('========');
 		for (var i = 0; i < items.length; i++) {
 			console.log('GENERATED:'.bold.red + ' ' + colors.cyan(items[i].replace(/\.[^/.]+$/, ".html")));
